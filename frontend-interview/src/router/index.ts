@@ -3,10 +3,13 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../components/Home.vue';
 import Dashboard from '../components/Dashboard.vue';
 import FakeAuthPage from '../components/FakeOAuth.vue';
+import RegistrationAssesment from '../components/RegistrationAssesment/AssesmentForm.vue';
+
 import { useAuthStore } from '../stores/auth';
 
 const routes: Array<RouteRecordRaw> = [
   { path: '/', component: Home },
+  { path: '/assesment', component: RegistrationAssesment },
   { path: '/fake-auth', component: FakeAuthPage },
   { path: '/dashboard', component: Dashboard, meta: { requiresAuth: true } }
 ];
