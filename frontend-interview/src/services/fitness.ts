@@ -9,9 +9,9 @@ export class FitnessService {
     return Promise.resolve(exercisesData.slice(0, 10) as Exercise[]);
   }
 
-  static getWorkoutByUserAssessment(level: string, category: string, equipment: string) {
+  static getWorkoutByUserAssessment(level: string, category: string, equipment: string, limit: number) {
     return Promise.resolve(exercisesData.filter((excercise) => {
       return excercise.level === level && excercise.category === category && excercise.equipment === equipment
-    }).slice(0, 10) as Exercise[]);
+    }).slice(0, limit) as Exercise[]);
   }
 }

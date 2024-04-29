@@ -13,11 +13,14 @@ const { level, equipment, category } = authStore.assessment;
 
 onMounted(async () => {
   try {
+    // limited workouts
+    const limit = 10;
     // Fetch exercises from the API
     const response = await FitnessService.getWorkoutByUserAssessment(
       level,
       category,
-      equipment
+      equipment,
+      limit
     );
     exercises.value = response;
   } catch (error) {
@@ -56,16 +59,16 @@ function logout() {
   <v-main>
     <v-container>
       <p class="pb-4">
-        Based on your assessment selections, we recommend these workouts.
+        {{
+          exercises.length < 1
+            ? "No workout is aligned with your assessment selections."
+            : "Based on your assessment selections, we recommend these workouts."
+        }}
       </p>
       <v-expansion-panels>
         <!-- Each exercise as an expandable panel -->
         <v-expansion-panel v-for="exercise in exercises" :key="exercise.id">
-          <v-expansion-panel-title
-            >{{ exercise.name }} - {{ exercise.level }} -
-            {{ exercise.category }} -
-            {{ exercise.equipment }}</v-expansion-panel-title
-          >
+          <v-expansion-panel-title>{{ exercise.name }}</v-expansion-panel-title>
           <v-expansion-panel-text>
             <div>
               <!--TODO: image-->
