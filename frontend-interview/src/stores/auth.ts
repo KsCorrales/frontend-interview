@@ -1,4 +1,4 @@
-// src/stores/useAuthStore.ts
+// src/stores/auth.ts
 import { defineStore } from 'pinia';
 
 interface User {

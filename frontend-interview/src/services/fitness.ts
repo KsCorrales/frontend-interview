@@ -1,15 +1,11 @@
-import { Exercise, UserAssessment } from '@/types/exercise';
-import exercisesData from '@/services/data/exercises.json'; // Importing JSON data
+import { Exercise } from '../types/exercise.ts';
+import exercisesData from './data/exercises.json'; // Importing JSON data
 
 export class FitnessService {
-  static getUserWorkout(userAssessment: UserAssessment): Promise<Exercise[]> {
-    // Filtering or custom logic to select exercises based on the user assessment
-    // For now, returns all exercises directly
-    return Promise.resolve(exercisesData as Exercise[]);
-  }
+  // todo - implement the logic to get the user assessment
 
   static getWorkoutByUserId(userId: string): Promise<Exercise[]> {
-    // Here, you could add logic to filter or customize workouts based on user ID
-    return Promise.resolve(exercisesData as Exercise[]);
+    // TODO: Assesment logic to be implemented
+    return Promise.resolve(exercisesData.slice(0,10) as Exercise[]);
   }
 }

@@ -61,12 +61,12 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { initiateGoogleAuth, fakeAuthCallback } from '@/services/authService';
-import type { User } from '@/services/authService';
+import { initiateGoogleAuth, fakeAuthCallback } from '../services/authService';
 
 const user = ref<User | null>(null);
 
 import { useRouter } from 'vue-router';
+import { User } from '../types/user';
 
 const router = useRouter();
 

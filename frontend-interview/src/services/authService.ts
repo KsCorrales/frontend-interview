@@ -1,14 +1,4 @@
-// src/services/authService.ts
-
-import { useRouter } from "vue-router";
-
-interface User {
-    id: string;
-    name: string;
-    email: string;
-    token: string;
-  }
-  
+import { User } from "../types/user";
   // Simulate a successful login response
   export function mockGoogleLogin(): Promise<User> {
     return new Promise((resolve) => {
