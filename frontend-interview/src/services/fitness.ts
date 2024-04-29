@@ -6,6 +6,12 @@ export class FitnessService {
 
   static getWorkoutByUserId(userId: string): Promise<Exercise[]> {
     // TODO: Assesment logic to be implemented
-    return Promise.resolve(exercisesData.slice(0,10) as Exercise[]);
+    return Promise.resolve(exercisesData.slice(0, 10) as Exercise[]);
+  }
+
+  static getWorkoutByUserAssessment(level: string, category: string, equipment: string) {
+    return Promise.resolve(exercisesData.filter((excercise) => {
+      return excercise.level === level && excercise.category === category && excercise.equipment === equipment
+    }).slice(0, 10) as Exercise[]);
   }
 }

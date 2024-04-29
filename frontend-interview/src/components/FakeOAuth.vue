@@ -11,9 +11,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary" dark @click="authorize">
-              Authorize
-            </v-btn>
+            <v-btn color="primary" dark @click="authorize"> Authorize </v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -22,20 +20,20 @@
 </template>
 
 <script lang="ts" setup>
-import { useAuthStore } from '../stores/auth';
-import { useRouter } from 'vue-router';
+import { useAuthStore } from "../stores/auth";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
 const authStore = useAuthStore();
 
 function authorize() {
   const fakeUser = {
-    id: '12345',
-    name: 'John Doe',
-    email: 'john@example.com',
-    token: 'fake-token-123456'
+    id: "12345",
+    name: "John Doe",
+    email: "john@example.com",
+    token: "fake-token-123456",
   };
   authStore.login(fakeUser);
-  router.push('/dashboard'); // Redirect to the dashboard after login
+  router.push("/assesment"); // Redirect to the dashboard after login
 }
 </script>
