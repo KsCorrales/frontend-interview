@@ -13,7 +13,7 @@
       <div class="text-center">
         <div class="text-body-2 font-weight-light mb-n1">Welcome to</div>
 
-        <h1 class="text-h2 font-weight-bold">Vuetify</h1>
+        <h1 class="text-h2 font-weight-bold">AIron Pump</h1>
       </div>
 
       <div class="py-4" />
@@ -38,118 +38,20 @@
 
             <template #subtitle>
               <div class="text-subtitle-1">
-                Replace this page by removing <v-kbd>{{ `<HelloWorld />` }}</v-kbd> in <v-kbd>pages/index.vue</v-kbd>.
+               Join the fitness revolution with AIron Pump
               </div>
             </template>
 
-            <v-overlay
-              opacity=".12"
-              scrim="primary"
-              contained
-              model-value
-              persistent
-            />
-          </v-card>
-        </v-col>
-
-        <v-col cols="6">
-          <v-card
-            append-icon="mdi-open-in-new"
-            class="py-4"
-            color="surface-variant"
-            prepend-icon="mdi-text-box-outline"
-            rel="noopener noreferrer"
-            rounded="lg"
-            subtitle="Learn about all things Vuetify in our documentation."
-            title="Documentation"
-            variant="text"
-          >
-            <div>
-              <v-card-text>
-                <v-btn
-                  color="primary"
-                  rounded
-                  text
-                  @click="initiateLogin"
-                >
-                Sign Up with Google            
-                </v-btn>
-                <div v-if="user">
-                    Logged in as {{ user.name }}
-                  </div>
-              </v-card-text>
-            </div>
-          </v-card>
-        </v-col>
-
-        <v-col cols="6">
-          <v-card
-            append-icon="mdi-open-in-new"
-            class="py-4"
-            color="surface-variant"
-            prepend-icon="mdi-star-circle-outline"
-            rel="noopener noreferrer"
-            rounded="lg"
-            subtitle="Explore available framework Features."
-            target="_blank"
-            title="Features"
-            variant="text"
-          >
-            <v-overlay
-              opacity=".06"
-              scrim="primary"
-              contained
-              model-value
-              persistent
-            />
-          </v-card>
-        </v-col>
-
-        <v-col cols="6">
-          <v-card
-            append-icon="mdi-open-in-new"
-            class="py-4"
-            color="surface-variant"
-            href="https://vuetifyjs.com/components/all"
-            prepend-icon="mdi-widgets-outline"
-            rel="noopener noreferrer"
-            rounded="lg"
-            subtitle="Discover components in the API Explorer."
-            target="_blank"
-            title="Components"
-            variant="text"
-          >
-            <v-overlay
-              opacity=".06"
-              scrim="primary"
-              contained
-              model-value
-              persistent
-            />
-          </v-card>
-        </v-col>
-
-        <v-col cols="6">
-          <v-card
-            append-icon="mdi-open-in-new"
-            class="py-4"
-            color="surface-variant"
-            href="https://discord.vuetifyjs.com"
-            prepend-icon="mdi-account-group-outline"
-            rel="noopener noreferrer"
-            rounded="lg"
-            subtitle="Connect with Vuetify developers."
-            target="_blank"
-            title="Community"
-            variant="text"
-          >
-            <v-overlay
-              opacity=".06"
-              scrim="primary"
-              contained
-              model-value
-              persistent
-            />
+            <template #actions>
+              <v-btn
+                color="primary"
+                rounded
+                text
+                @click="initiateLogin"
+              >
+                Sign Up with Google
+              </v-btn>
+            </template>
           </v-card>
         </v-col>
       </v-row>
@@ -164,9 +66,13 @@ import type { User } from '@/services/authService';
 
 const user = ref<User | null>(null);
 
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
 function initiateLogin() {
-  // This would be the initial click to "log in with Google"
-  initiateGoogleAuth();
+  // Pass the router instance to the service function
+  initiateGoogleAuth(router);
 }
 
 // Simulate the callback flow

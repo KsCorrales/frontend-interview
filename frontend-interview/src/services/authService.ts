@@ -27,9 +27,9 @@ interface User {
   const GOOGLE_AUTH_URL = 'https://fake.google.com/o/oauth2/auth';
   const REDIRECT_URI = 'http://localhost:8080/auth/callback';  // Adjust as necessary for your app
   
-  export function initiateGoogleAuth() {
-    const router = useRouter();
-    router.push('/fake-auth'); // Redirect to the fake auth page within the app
+  export function initiateGoogleAuth(router) {
+    // Redirect to the fake auth page within the app using the router instance passed as a parameter
+    router.push('/fake-auth');
   }
   
   export function fakeAuthCallback() {
