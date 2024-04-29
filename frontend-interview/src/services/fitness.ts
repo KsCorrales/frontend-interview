@@ -14,4 +14,9 @@ export class FitnessService {
       return excercise.level === level && excercise.category === category && excercise.equipment === equipment
     }).slice(0, limit) as Exercise[]);
   }
+
+  static async getEquipments(): Promise<string[]> {
+    const response = await Promise.resolve([...new Set(exercisesData.map((exercise) => exercise.equipment))]);
+    return response.filter(item => item !== null) as string[];
+  }
 }

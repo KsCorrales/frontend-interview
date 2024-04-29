@@ -55,19 +55,26 @@
 <script lang="ts" setup>
 import { useAuthStore } from "../../stores/auth";
 import { useRouter } from "vue-router";
-import { ref, computed } from "vue";
-import exercisesData from "../../services/data/exercises.json";
+import { ref, onMounted } from "vue";
+import { FitnessService } from "../../services/fitness";
 
 const level = ref("");
 const category = ref("");
 const equipment = ref("");
 
-const equipments = computed(() => {
-  return [...new Set(exercisesData.map((excersise) => excersise.equipment))];
-});
+const equipments = ref<string[]>([]);
 
 const router = useRouter();
 const authStore = useAuthStore();
+
+onMounted(async () => {
+  try {
+    const response = await FitnessService.getEquipments();
+    equipments.value = response;
+  } catch (error) {
+    console.error("Error fetching equipments:", error);
+  }
+});
 
 function authorize() {
   const assesment = {
