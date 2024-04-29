@@ -14,6 +14,8 @@ onMounted(async () => {
   try {
     // Fetch exercises from the API
     const response = await FitnessService.getWorkoutByUserId(authStore.user!.id);
+    const options = await FitnessService.getEquipmentOptions();
+    console.log('Equipment options:', options);
     exercises.value = response;
   } catch (error) {
     console.error('Error fetching exercises:', error);
